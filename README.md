@@ -50,7 +50,7 @@ Designed with real-time industry standards including layered architecture, DTOs,
 - **Lombok**
 - **ModelMapper**
 - **Spring Security + JWT**
-- **Swagger / OpenAPI**
+- **OpenAPI**
 - **JUnit & Mockito**
 - **Maven**
 
@@ -71,12 +71,5 @@ com.ums
 ├── exception
 ├── config
 └── UniversityManagementSystemApplication.java
----
-
-## 🔧 Setup & Run
-
-### 1️⃣ Clone the Repository
-```bash
-git clone https://github.com/your-username/university-management-system.git
 ```
 
