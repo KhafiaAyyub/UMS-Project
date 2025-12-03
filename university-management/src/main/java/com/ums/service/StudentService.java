@@ -6,7 +6,13 @@ import com.ums.entity.Student;
 
 public interface StudentService {
 	
-	List<Student> getAllStudents();
+    Student createStudent(Student student); //create
+	List<Student> getAllStudents(); //show
+    Student getStudentById(Long id); //show by id
+    Student updateStudent(Long id, Student studentDetails);
+    void deleteStudent(Long id);
+    Student patchStudent(Long id, Student studentDetails);
+    
 	
 	
 
