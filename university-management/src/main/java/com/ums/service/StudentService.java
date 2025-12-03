@@ -13,6 +13,7 @@ public interface StudentService {
     void deleteStudent(Long id);
     Student patchStudent(Long id, Student studentDetails);
     List<Student> searchStudentsByName(String name);
+	Student assignDepartment(Long studentId, Long deptId);
 
 	
 	

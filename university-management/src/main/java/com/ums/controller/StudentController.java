@@ -80,4 +80,18 @@ public class StudentController {
 		List<Student> students = studentService.searchStudentsByName(name);
 	    return ResponseEntity.ok(students);
 	}
+	
+	//Many TO ONE
+	@PutMapping("/{studentId}/department/{deptId}")
+	public ResponseEntity<Student> assignDepartment(
+	        @PathVariable Long studentId,
+	        @PathVariable Long deptId) {
+
+	    Student updated = studentService.assignDepartment(studentId, deptId);
+	    return ResponseEntity.ok(updated);
+	}
+
+	
+	
+	
 }

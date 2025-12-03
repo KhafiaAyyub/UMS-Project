@@ -2,9 +2,12 @@ package com.ums.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.ums.entity.Department;
 import com.ums.entity.Student;
+import com.ums.repository.DepartmentRepository;
 import com.ums.repository.StudentRepository;
 import com.ums.service.StudentService;
 
@@ -15,7 +18,9 @@ import lombok.RequiredArgsConstructor;
 public class StudentServiceImpl implements StudentService{
 	
 	private final StudentRepository studentRepository;
-	
+	@Autowired
+	private DepartmentRepository departmentRepository;
+
 	
 	@Override
 	public List<Student> getAllStudents() {
@@ -66,8 +71,8 @@ public class StudentServiceImpl implements StudentService{
         if (studentDetails.getEmail() != null) {
             existingStudent.setEmail(studentDetails.getEmail());
         }
-        if (studentDetails.getCourse() != null) {
-            existingStudent.setCourse(studentDetails.getCourse());
+        if (studentDetails.getCourses() != null) {
+            existingStudent.setCourses(studentDetails.getCourses());
         }
 
         return studentRepository.save(existingStudent);
@@ -76,8 +81,20 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public List<Student> searchStudentsByName(String name) {
-
 		return studentRepository.findByNameContainingIgnoreCase(name);
+	}
+
+
+	public Student assignDepartment(Long studentId, Long deptId) {
+		Student student = studentRepository.findById(studentId)
+	            .orElseThrow(() -> new RuntimeException("Student not found"));
+
+	    Department department = departmentRepository.findById(deptId)
+	            .orElseThrow(() -> new RuntimeException("Department not found"));
+
+	    student.setDepartment(department);
+
+	    return studentRepository.save(student);
 	}
 
 	}
