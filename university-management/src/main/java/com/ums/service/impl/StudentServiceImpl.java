@@ -73,6 +73,13 @@ public class StudentServiceImpl implements StudentService{
         return studentRepository.save(existingStudent);
     }
 
+
+	@Override
+	public List<Student> searchStudentsByName(String name) {
+
+		return studentRepository.findByNameContainingIgnoreCase(name);
+	}
+
 	}
 
 	

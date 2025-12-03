@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ums.entity.Student;
@@ -72,5 +73,11 @@ public class StudentController {
 		 Student updatedStudent = studentService.patchStudent(id, studentDetails);
 	        return ResponseEntity.ok(updatedStudent);
 	}
-
+	
+	//serachStudents
+	@GetMapping("/search")
+	public ResponseEntity<List<Student>> searchStudents(@RequestParam("name") String name) {
+		List<Student> students = studentService.searchStudentsByName(name);
+	    return ResponseEntity.ok(students);
+	}
 }
