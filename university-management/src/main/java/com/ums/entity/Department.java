@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -17,7 +19,11 @@ public class Department {
 
     private String name;
 
-    // 🔥 One-To-Many (Department → Students)
+    // One-To-Many (Department → Students)
     @OneToMany(mappedBy = "department")
+    @JsonIgnore
     private List<Student> students = new ArrayList<>();
 }
+
+//Many students belong to one department
+//Department should NOT be deleted if a student is deleted

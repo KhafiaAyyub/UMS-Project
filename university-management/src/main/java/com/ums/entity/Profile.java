@@ -25,3 +25,6 @@ public class Profile {
     @OneToOne(mappedBy = "profile")
     private Student student;
 }
+
+//Student has only one profile
+//Profile belongs to a single student

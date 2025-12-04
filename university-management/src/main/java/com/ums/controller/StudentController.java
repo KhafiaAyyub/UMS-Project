@@ -82,6 +82,7 @@ public class StudentController {
 	}
 	
 	//Many TO ONE
+	
 	@PutMapping("/{studentId}/department/{deptId}")
 	public ResponseEntity<Student> assignDepartment(
 	        @PathVariable Long studentId,
